@@ -1,23 +1,23 @@
 # Elpis — web app
 
-Where Hope Meets Opportunity. This folder is the Elpis prototype as a web app you can put on GitHub Pages and add to an iPhone Home Screen.
+Where Hope Meets Opportunity. Elpis runs as a web app on GitHub Pages and can be added to an iPhone Home Screen. Accounts, profiles, posts, likes and uploads are stored in Supabase, protected by row-level security.
 
-## Put it online with GitHub Pages (about 5 minutes, free)
+## Is it safe that this repository is public?
 
-1. Sign in at github.com and create a new **public** repository, for example `elpis`.
-2. On the empty repository page, click **uploading an existing file**.
-3. Drag **everything inside this folder** (index.html, app.js, app.css, manifest.webmanifest, sw.js, the `icons` folder and this README) into the page. Don't drag the folder itself. Click **Commit changes**.
-4. Open **Settings → Pages**. Under "Build and deployment", set **Source: Deploy from a branch**, **Branch: main**, folder **/ (root)**, and click **Save**.
-5. After 1–2 minutes the page shows your link: `https://YOUR-USERNAME.github.io/elpis/`.
+Yes. The only Supabase key in this code is the **publishable** key, which is meant to be public. What a signed-in student can read or change is decided by the security rules in the database (see `supabase-setup.sql`), not by this code:
 
-## Install it on your iPhone
+- Private info (email, phone, birth date, residency, financial info, plan, settings) is readable only by its owner.
+- Posts from students under 18, or with "Private account" on, are visible only to their author.
+- "My college" posts are visible only to students at the same school.
+- Each student can upload, change or delete only their own files, posts and likes.
+- Visitors who aren't signed in can't read anything.
 
-1. Open the link in **Safari**.
-2. Tap **Share** (the square with an arrow) → **Add to Home Screen** → **Add**.
-3. Open **Elpis** from your Home Screen. It runs full screen, like an app.
+Never put the **secret key** (`sb_secret_…`), the **service_role** key or the database password in this repository.
 
-## Good to know
+## Update the site
 
-- Accounts, posts and uploads are saved **on each device** (in the browser). They don't sync between phones yet; that needs a server.
-- After the first visit the app also opens offline.
-- To update: upload the new files to the same repository (replace the old ones). The app picks up the new version the next time it's opened online.
+Upload every file in this folder to the repository (replace the old ones) and commit. The app picks up the new version the next time it's opened online.
+
+## Install on iPhone
+
+Open the site in Safari → Share → Add to Home Screen → Add.
