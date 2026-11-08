@@ -1,5 +1,5 @@
 // Keeps Elpis working offline: the app files are cached on first visit.
-const CACHE = 'elpis-v2';
+const CACHE = 'elpis-v4';
 const SHELL = ['./', './index.html', './app.js', './app.css', './manifest.webmanifest', './icons/apple-touch-icon.png', './icons/icon-192.png', './icons/icon-512.png'];
 self.addEventListener('install', (e) => {
   e.waitUntil(caches.open(CACHE).then((c) => c.addAll(SHELL)).then(() => self.skipWaiting()));
